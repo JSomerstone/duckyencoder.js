@@ -30,12 +30,17 @@ module.exports =
         for (var i = 0, max = this.instructions.length; i < max; i++)
         {
             if (this.instructions[i])
-                this.readIntroduction(this.instructions[i]);
+                this.readInstructions(this.instructions[i]);
         }
         return this;
     },
 
-    readIntroduction : function(introString)
+    getFile : function()
+    {
+        return new Buffer(this.file);
+    },
+
+    readInstructions : function(introString)
     {
         var splitted = introString.split(' ', 2),
             command = null,
@@ -116,7 +121,7 @@ module.exports =
         }
 
         if (parameter) {
-            return this.press(parameter).press('MODIFIERKEY_' + key);
+            return this.press(parameter).press(key);
         } else {
             return this.pressKey('LEFT_' + key).addZeroByte();
         }

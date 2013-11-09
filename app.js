@@ -9,14 +9,16 @@ var
 
 //console.log(encoder);
 
-var stuff = fs.readFileSync('combos.txt').toString(),
+    var duckyScript = fs.readFileSync('/tmp/cmd.script').toString(),
     layoutSettings = fs.readFileSync('layouts/default.json').toString();
 
 keyboardLayout.setLayout(JSON.parse(layoutSettings));
 
 encoder.verbose = true;
 encoder.setLayout(keyboardLayout);
-encoder.read(stuff)
-    .parse();
+var binary = encoder.read(duckyScript).parse().getFile();
 
-console.log(encoder.file);
+fs.writeFile('/tmp/output.bin', binary, function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+});

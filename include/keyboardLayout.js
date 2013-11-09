@@ -49,30 +49,32 @@ module.exports =
     getNameOfKey : function (key)
     {
         if (this.keyMapping[key.toUpperCase()])
-            return 'KEY_' + this.keyMapping[key];
+            return this.keyMapping[key];
 
         return null;
     },
 
     keyMapping : {
-        //Key : 'KEY_'+NAME index in layout
-        ESCAPE : 'ESC',
-        DEL : 'DELETE',
-        CONTROL : 'CTRL',
-        DOWN : 'DOWNARROW',
-        UP : 'UPARROW',
-        LEFTARROW : 'LEFT',
-        RIGHTARROW : 'RIGHT',
-        MENU : 'APP',
-        WINDOWS : 'GUI',
-        PLAY : 'MEDIA_PLAY_PAUSE',
-        PAUSE : 'MEDIA_PLAY_PAUSE',
-        STOP : 'MEDIA_STOP',
-        MUTE : 'MEDIA_MUTE',
-        VOLUMEUP : 'MEDIA_VOLUME_INC',
-        VOLUMEDOWN : 'MEDIA_VOLUME_DEC',
-        SCROLLLOCK : 'SCROLL_LOCK',
-        NUMLOCK : 'NUM_LOCK',
-        CAPSLOCK : 'CAPS_LOCK'
+        //Key : '(MODIFIER)KEY_'+NAME index in layout
+        ESCAPE : 'KEY_ESC',
+        DEL : 'KEY_DELETE',
+        CONTROL : 'MODIFIERKEY_CTRL',
+        DOWN : 'KEY_DOWN',
+        UP : 'KEY_UP',
+        LEFTARROW : 'KEY_LEFT',
+        RIGHTARROW : 'KEY_RIGHT',
+        MENU : 'KEY_APP',
+        WINDOWS : 'MODIFIERKEY_GUI',
+        GUI : 'MODIFIERKEY_GUI',
+        PLAY : 'KEY_MEDIA_PLAY_PAUSE',
+        PAUSE : 'KEY_MEDIA_PLAY_PAUSE',
+        STOP : 'KEY_MEDIA_STOP',
+        MUTE : 'KEY_MEDIA_MUTE',
+        VOLUMEUP : 'KEY_MEDIA_VOLUME_INC',
+        VOLUMEDOWN : 'KEY_MEDIA_VOLUME_DEC',
+        EJECT : 'KEY_MEDIA_EJECT',
+        SCROLLLOCK : 'KEY_SCROLL_LOCK',
+        NUMLOCK : 'KEY_NUM_LOCK',
+        CAPSLOCK : 'KEY_CAPS_LOCK'
     }
 }
