@@ -48,19 +48,25 @@ module.exports =
 
     getNameOfKey : function (key)
     {
-        if (this.keyMapping[key.toUpperCase()])
-            return this.keyMapping[key];
+        var ucKey = key.toUpperCase();
+        if (this.layout['KEY_' + ucKey])
+            return 'KEY_' + ucKey;
+        if (this.layout['MODIFIERKEY_' + ucKey])
+            return 'MODIFIERKEY_' + ucKey;
+        if (this.keyAliases[ucKey])
+            return this.keyAliases[ucKey];
 
         return null;
     },
 
-    keyMapping : {
-        //Key : '(MODIFIER)KEY_'+NAME index in layout
+    keyAliases : {
+        //Alias : NAME_OF_KEY
         ESCAPE : 'KEY_ESC',
         DEL : 'KEY_DELETE',
         CONTROL : 'MODIFIERKEY_CTRL',
         CTRL : 'MODIFIERKEY_CTRL',
         ALT : 'MODIFIERKEY_ALT',
+        SHIFT : 'MODIFIERKEY_SHIFT',
         DOWN : 'KEY_DOWN',
         UP : 'KEY_UP',
         LEFTARROW : 'KEY_LEFT',
