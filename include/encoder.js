@@ -97,7 +97,7 @@ module.exports =
 
         for (j = 0, max = typing.length; j < max ; j++)
         {
-            this.file.push(typing.charCodeAt(j));
+            this.press(typing[j]).addZeroByte();
         }
     },
 
@@ -151,6 +151,7 @@ module.exports =
             this.layout.getKey('MODIFIERKEY_LEFT_ALT')
                 | this.layout.getKey('MODIFIERKEY_SHIFT')
         );
+        return this;
     },
 
     press : function (keyName)

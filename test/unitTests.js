@@ -41,9 +41,9 @@ module.exports =
     },
     testParsingString : function(test)
     {
-        encoder.layout = getDummyLayout(1);
+        encoder.layout = actualLayout;
         encoder.read('STRING abcd').parse();
-        test.deepEqual(encoder.file, [97, 98, 99, 100]);
+        test.deepEqual(encoder.file, [4, 0, 5, 0, 6, 0, 7, 0]);
         test.done();
     },
 
@@ -88,10 +88,14 @@ provideInstructionsAndExpectedOutcome = function()
         },
         {
             input : 'STRING abba',
-            output : [97, 98, 98, 97]
+            output : [4, 0, 5, 0, 5, 0, 4, 0]
         },
         {
             input : 'GUI r',
+            output : [21, 8]
+        },
+        {
+            input : 'WINDOWS r',
             output : [21, 8]
         },
         {
