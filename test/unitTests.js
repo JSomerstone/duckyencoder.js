@@ -110,6 +110,10 @@ provideInstructionsAndExpectedOutcome = function()
             output : [4, 0, 5, 0, 5, 0, 4, 0]
         },
         {
+            input : 'STRING A B',
+            output : [4, 2, 44, 0, 5, 2]
+        },
+        {
             input : 'GUI r',
             output : [21, 8]
         },

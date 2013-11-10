@@ -23,8 +23,7 @@ module.exports =
     {
         var code = this.charToCode(char),
             keyCodes = this.getKeysForCode(code),
-            keys = []
-            ;
+            keys = [];
         if ( ! keyCodes)
         {
             console.log('Unknown character ' + char);

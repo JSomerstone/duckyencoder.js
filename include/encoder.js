@@ -112,8 +112,7 @@ module.exports =
 
         for (var j = 0, max = string.length; j < max ; j++)
         {
-            var keys = this.layout.getCharKeys(string[j]),
-                bits = new Buffer(keys.length);
+            var keys = this.layout.getCharKeys(string[j]);
 
             if (keys.length == 1)
                 this.addToFile(keys[0]).addZeroByte();
@@ -122,7 +121,6 @@ module.exports =
                 this.addToFile(keys[0])
                     .addToFile(keys[1]);
             }
-            //this.press(this.charToCode(string[j])).addZeroByte();
         }
         this.applyDefaultDelay();
     },
