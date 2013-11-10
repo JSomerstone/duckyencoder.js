@@ -110,5 +110,17 @@ provideInstructionsAndExpectedOutcome = function()
             input : 'ALT F4',
             output : [61, 4]
         },
+        {
+            input : 'CTRL-ALT DELETE',
+            output : [76, 5]
+        },
+        {
+            input : 'CTRL-SHIFT x',
+            output : [27, 3]
+        },
+        {
+            input : 'ALT-SHIFT',
+            output : [226, 6]
+        },
     ];
 }
