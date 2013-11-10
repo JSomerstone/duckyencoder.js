@@ -62,6 +62,11 @@ module.exports =
 
         if (command == 'DELAY')
             return this.delay(parseInt(parameter));
+        else if (command == 'DEFAULT_DELAY')
+        {
+            this.defaultDelay = parseInt(parameter);
+            return;
+        }
 
         if (command == 'STRING')
             return this.type(parameter.toString());
@@ -105,6 +110,7 @@ module.exports =
         {
             this.press(typing[j]).addZeroByte();
         }
+        this.applyDefaultDelay();
     },
 
     pressKey : function(key)
@@ -114,6 +120,7 @@ module.exports =
 
         this.press('KEY_' + key);
         return this;
+        this.applyDefaultDelay();
     },
 
     pressModifierKey : function(key, parameter)
@@ -131,10 +138,11 @@ module.exports =
         }
 
         if (parameter) {
-            return this.press(parameter).press(key);
+            this.press(parameter).press(key);
         } else {
-            return this.pressKey('LEFT_' + key).addZeroByte();
+            this.pressKey('LEFT_' + key).addZeroByte();
         }
+        return this.applyDefaultDelay();
     },
 
     pressKeyCombo : function (comboKeys, parameter)
@@ -148,7 +156,7 @@ module.exports =
             this.layout.getKey('MODIFIERKEY_' + keys[0])
             | this.layout.getKey('MODIFIERKEY_' + keys[1])
         );
-        return this;
+        return this.applyDefaultDelay();
     },
 
     pressAltShift : function()
@@ -183,8 +191,16 @@ module.exports =
             {
                 this.file.push(this.lastCommand[cmd]);
             }
+            this.applyDefaultDelay();
         }
-        this.resetLastCommand();    
+        this.resetLastCommand();
+        return this;
+    },
+
+    applyDefaultDelay : function()
+    {
+        if (this.defaultDelay)
+            this.delay(this.defaultDelay);
         return this;
     },
 
