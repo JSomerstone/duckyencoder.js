@@ -99,8 +99,16 @@ provideInstructionsAndExpectedOutcome = function()
             output : [21, 8]
         },
         {
-            input : 'WINDOWS r',
-            output : [21, 8]
+            input : 'CONTROL s',
+            output : [22, 1]
+        },
+        {
+            input : 'CTRL s',
+            output : [22, 1]
+        },
+        {
+            input : 'ALT F4',
+            output : [61, 4]
         },
     ];
 }

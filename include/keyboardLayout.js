@@ -13,7 +13,7 @@ module.exports =
 
     getKey : function(key)
     {
-        var ucKey = key.toUpperCase();
+        var ucKey = key.trim().toUpperCase();
         if (this.layout[ucKey])
         {
             return this.keyToByte(this.layout[ucKey]);
@@ -59,6 +59,8 @@ module.exports =
         ESCAPE : 'KEY_ESC',
         DEL : 'KEY_DELETE',
         CONTROL : 'MODIFIERKEY_CTRL',
+        CTRL : 'MODIFIERKEY_CTRL',
+        ALT : 'MODIFIERKEY_ALT',
         DOWN : 'KEY_DOWN',
         UP : 'KEY_UP',
         LEFTARROW : 'KEY_LEFT',

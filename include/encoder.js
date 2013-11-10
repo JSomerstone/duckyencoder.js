@@ -112,6 +112,10 @@ module.exports =
 
     pressModifierKey : function(key, parameter)
     {
+        var keyName = this.layout.getNameOfKey(key);
+        if ( ! keyName)
+            throw "Unknown/unsupported key " + key;
+
         if(this.verbose)
         {
             if (parameter)
@@ -156,9 +160,11 @@ module.exports =
 
     press : function (keyName)
     {
-        var keyValue = this.layout.getKey(keyName.trim().toUpperCase());
+        var keyValue = this.layout.getKey(keyName);
         if (keyValue)
-            this.file.push(this.layout.getKey(keyName));
+            this.file.push(keyValue);
+        else
+            throw "Unable to get value for key " + keyName;
 
         return this;
     },
