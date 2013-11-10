@@ -81,6 +81,34 @@ module.exports =
         encoder.readInstructions('REPEAT 2');
         test.deepEqual([0, 8,0, 8,0, 8], encoder.file);
         test.done();
+    },
+
+    testDefaultDelayIsApplied : function(test)
+    {
+        encoder.readInstructions('DEFAULT_DELAY 8');
+        encoder.readInstructions('STRING a');
+        encoder.readInstructions('STRING b');
+        encoder.readInstructions('STRING c');
+        test.deepEqual(
+         //  a     delay b     delay c     delay
+            [4, 0, 0, 8, 5, 0, 0, 8, 6, 0, 0, 8],
+            encoder.file
+        );
+        test.done();
+    },
+
+    testDefaultDelayIsOverridenWithDelay : function(test)
+    {
+        encoder.readInstructions('DEFAULT_DELAY 8');
+        encoder.readInstructions('STRING a');
+        encoder.readInstructions('DELAY 9')
+        encoder.readInstructions('STRING b');
+        test.deepEqual(
+         //  a     delay delay b     delay
+            [4, 0, 0, 8, 0, 9, 5, 0, 0, 8],
+            encoder.file
+        );
+        test.done();
     }
 };
 
