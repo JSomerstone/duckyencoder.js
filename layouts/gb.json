@@ -1,0 +1,208 @@
+{
+    "KEY_BACKSLASH" : 64,
+    "KEY_ASH" : 100,
+        
+    "ASCII_20" : ["KEY_SPACE"],
+    "ASCII_21" : ["KEY_1", "MODIFIERKEY_SHIFT"],
+    "ASCII_22" : ["KEY_2", "MODIFIERKEY_SHIFT"],
+    "ASCII_5C" : ["KEY_ASH"],
+    "ASCII_24" : ["KEY_4", "MODIFIERKEY_SHIFT"],
+    "ASCII_25" : ["KEY_5", "MODIFIERKEY_SHIFT"],
+    "ASCII_26" : ["KEY_7", "MODIFIERKEY_SHIFT"],
+    "ASCII_27" : ["KEY_QUOTE"],
+    
+    "ASCII_28" : ["KEY_9", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_29" : ["KEY_0", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_2A" : ["KEY_8", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_2B" : ["KEY_EQUAL", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_2C" : ["KEY_COMMA"],
+    
+    "ASCII_2D" : ["KEY_MINUS"],
+    
+    "ASCII_2E" : ["KEY_PERIOD"],
+    
+    "ASCII_2F" : ["KEY_SLASH"],
+    
+    "ASCII_30" : ["KEY_0"],
+    
+    "ASCII_31" : ["KEY_1"],
+    
+    "ASCII_32" : ["KEY_2"],
+    
+    "ASCII_33" : ["KEY_3"],
+    
+    "ASCII_34" : ["KEY_4"],
+    
+    "ASCII_35" : ["KEY_5"],
+    
+    "ASCII_36" : ["KEY_6"],
+    
+    "ASCII_37" : ["KEY_7"],
+    
+    "ASCII_38" : ["KEY_8"],
+    
+    "ASCII_39" : ["KEY_9"],
+    
+    "ASCII_3A" : ["KEY_SEMICOLON", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_3B" : ["KEY_SEMICOLON"],
+    
+    "ASCII_3C" : ["KEY_COMMA", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_3D" : ["KEY_EQUAL"],
+    
+    "ASCII_3E" : ["KEY_PERIOD", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_3F" : ["KEY_SLASH", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_40" : ["KEY_QUOTE", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_41" : ["KEY_A", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_42" : ["KEY_B", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_43" : ["KEY_C", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_44" : ["KEY_D", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_45" : ["KEY_E", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_46" : ["KEY_F", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_47" : ["KEY_G", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_48" : ["KEY_H", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_49" : ["KEY_I", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4A" : ["KEY_J", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4B" : ["KEY_K", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4C" : ["KEY_L", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4D" : ["KEY_M", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4E" : ["KEY_N", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_4F" : ["KEY_O", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_50" : ["KEY_P", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_51" : ["KEY_Q", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_52" : ["KEY_R", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_53" : ["KEY_S", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_54" : ["KEY_T", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_55" : ["KEY_U", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_56" : ["KEY_V", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_57" : ["KEY_W", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_58" : ["KEY_X", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_59" : ["KEY_Y", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_5A" : ["KEY_Z", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_5B" : ["KEY_LEFT_BRACE"],
+    
+    "ASCII_23" : ["KEY_BACKSLASH"],
+    
+    "ASCII_5D" : ["KEY_RIGHT_BRACE"],
+    
+    "ASCII_5E" : ["KEY_6", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_5F" : ["KEY_MINUS", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_60" : ["KEY_TILDE"],
+    
+    "ASCII_61" : ["KEY_A"],
+    
+    "ASCII_62" : ["KEY_B"],
+    
+    "ASCII_63" : ["KEY_C"],
+    
+    "ASCII_64" : ["KEY_D"],
+    
+    "ASCII_65" : ["KEY_E"],
+    
+    "ASCII_66" : ["KEY_F"],
+    
+    "ASCII_67" : ["KEY_G"],
+    
+    "ASCII_68" : ["KEY_H"],
+    
+    "ASCII_69" : ["KEY_I"],
+    
+    "ASCII_6A" : ["KEY_J"],
+    
+    "ASCII_6B" : ["KEY_K"],
+    
+    "ASCII_6C" : ["KEY_L"],
+    
+    "ASCII_6D" : ["KEY_M"],
+    
+    "ASCII_6E" : ["KEY_N"],
+    
+    "ASCII_6F" : ["KEY_O"],
+    
+    "ASCII_70" : ["KEY_P"],
+    
+    "ASCII_71" : ["KEY_Q"],
+    
+    "ASCII_72" : ["KEY_R"],
+    
+    "ASCII_73" : ["KEY_S"],
+    
+    "ASCII_74" : ["KEY_T"],
+    
+    "ASCII_75" : ["KEY_U"],
+    
+    "ASCII_76" : ["KEY_V"],
+    
+    "ASCII_77" : ["KEY_W"],
+    
+    "ASCII_78" : ["KEY_X"],
+    
+    "ASCII_79" : ["KEY_Y"],
+    
+    "ASCII_7A" : ["KEY_Z"],
+    
+    "ASCII_7B" : ["KEY_LEFT_BRACE", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_7E" : ["KEY_BACKSLASH", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_7D" : ["KEY_RIGHT_BRACE", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_7C" : ["KEY_ASH", "MODIFIERKEY_SHIFT"],
+    
+    "ASCII_7F" : ["KEY_BACKSPACE"],
+    
+    
+    "ISO_8859_1_A0" : ["KEY_SPACE"],
+    
+    "ISO_8859_1_A3" : ["KEY_3", "MODIFIERKEY_SHIFT"],
+    
+    "ISO_8859_1_A6" : ["KEY_TILDE", "MODIFIERKEY_RIGHT_ALT"],
+    
+    "ISO_8859_1_AC" : ["KEY_TILDE", "MODIFIERKEY_SHIFT"],
+
+    "ISO_8859_1_E9" : ["KEY_E", "MODIFIERKEY_RIGHT_ALT"],
+    
+    "ISO_8859_1_ED" : ["KEY_I", "MODIFIERKEY_RIGHT_ALT"],
+    
+    "ISO_8859_1_F3" : ["KEY_O", "MODIFIERKEY_RIGHT_ALT"],
+    
+    "ISO_8859_1_FA" : ["KEY_U", "MODIFIERKEY_RIGHT_ALT"],
+    
+    "UNICODE_20AC" : ["KEY_4", "MODIFIERKEY_RIGHT_ALT"]
+}

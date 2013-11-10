@@ -5,10 +5,54 @@
 module.exports =
 {
     layout : null,
+    locale : null,
 
     setLayout : function(layout)
     {
         this.layout = layout;
+        return this;
+    },
+
+    setLocale : function(locale)
+    {
+        this.locale = locale;
+        return this;
+    },
+
+    getCharKeys : function (char)
+    {
+        var code = this.charToCode(char),
+            keyCodes = this.getKeysForCode(code),
+            keys = []
+            ;
+        if ( ! keyCodes)
+        {
+            console.log('Unknown character ' + char);
+            return [0x00];
+        }
+        for(var i = 0, max = keyCodes.length; i < max ; i++)
+        {
+            keys[i] = this.getKey(keyCodes[i]);
+        }
+        return keys;
+    },
+    charToCode: function (char)
+    {
+        var c = char.toString().charCodeAt(0),
+            hexCode = c.toString(16).toUpperCase();
+        if(c < 128){
+            return "ASCII_" + hexCode
+        }else if (c < 256){
+            return "ISO_8859_1_" + hexCode;
+        }else{
+            return "UNICODE_" + hexCode;
+        }
+    },
+
+    getKeysForCode : function(code)
+    {
+        if (this.locale[code])
+            return this.locale[code];
     },
 
     getKey : function(key)
@@ -71,6 +115,8 @@ module.exports =
         UP : 'KEY_UP',
         LEFTARROW : 'KEY_LEFT',
         RIGHTARROW : 'KEY_RIGHT',
+        DOWNARROW : 'KEY_DOWN',
+        UPARROW : 'KEY_UP',
         MENU : 'KEY_APP',
         WINDOWS : 'MODIFIERKEY_GUI',
         GUI : 'MODIFIERKEY_GUI',

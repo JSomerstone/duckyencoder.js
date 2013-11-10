@@ -4,9 +4,11 @@
 var encoder = require('../include/encoder.js'),
     actualLayout = require('../include/keyboardLayout.js'),
     fs = require('fs'),
-    layoutSettings = fs.readFileSync(__dirname + '/../layouts/default.json').toString();
+    layoutSettings = fs.readFileSync(__dirname + '/../layouts/default.json').toString(),
+    localeSettings = fs.readFileSync(__dirname + '/../layouts/gb.json').toString();
 
-actualLayout.setLayout(JSON.parse(layoutSettings));
+actualLayout.setLayout(JSON.parse(layoutSettings))
+    .setLocale(JSON.parse(localeSettings));
 module.exports =
 {
     setUp: function (callback) {

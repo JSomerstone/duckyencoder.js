@@ -43,45 +43,49 @@ module.exports =
 
     readInstructions : function(introString)
     {
-        var splitted = introString.split(' ', 2),
-            command = null,
-            parameter = null;
+        var argument = this.splitFromFirstSpace(introString);
 
-        if (splitted[0])
-            command = splitted[0];
-        if (splitted[1])
-            parameter = splitted[1];
-
-        if (this.isComment(command))
+        if (this.isComment(argument.action))
             return;
 
-        if (this.isRepeat(command))
-            return this.repeatLastCommand(parseInt(parameter));
+        if (this.isRepeat(argument.action))
+            return this.repeatLastCommand(parseInt(argument.parameter));
 
         this.resetLastCommand();
 
-        if (command == 'DELAY')
-            return this.delay(parseInt(parameter));
-        else if (command == 'DEFAULT_DELAY')
+        if (argument.action == 'DELAY')
+            return this.delay(parseInt(argument.parameter));
+        else if (argument.action == 'DEFAULT_DELAY')
         {
-            this.defaultDelay = parseInt(parameter);
+            this.defaultDelay = parseInt(argument.parameter);
             return;
         }
 
-        if (command == 'STRING')
-            return this.type(parameter.toString());
+        if (argument.action == 'STRING')
+            return this.type(argument.parameter.toString());
 
-        if (command == 'ALT-SHIFT')
+        if (argument.action == 'ALT-SHIFT')
             return this.pressAltShift();
 
-        if (this.isModifier(command))
-            return this.pressModifierKey(command, parameter);
+        if (this.isModifier(argument.action))
+            return this.pressModifierKey(argument.action, argument.parameter);
 
-        if (this.isKeyCombo(command))
-            return this.pressKeyCombo(command, parameter);
+        if (this.isKeyCombo(argument.action))
+            return this.pressKeyCombo(argument.action, argument.parameter);
 
-        this.pressKey(command);
+        this.pressKey(argument.action);
         this.addZeroByte();
+    },
+
+    splitFromFirstSpace : function (command)
+    {
+        if (command.indexOf(' ') == -1)
+            return {action: command, parameter : null};
+
+        return {
+            action: command.substr(0,command.indexOf(' ')),
+            parameter: command.substr(command.indexOf(' ')+1)
+        };
     },
 
     delay : function(delay)
@@ -101,14 +105,24 @@ module.exports =
         }
     },
 
-    type : function(typing)
+    type : function(string)
     {
         if(this.verbose)
-            console.log('Typing "' + typing + '"');
+            console.log('Typing "' + string + '"');
 
-        for (j = 0, max = typing.length; j < max ; j++)
+        for (var j = 0, max = string.length; j < max ; j++)
         {
-            this.press(typing[j]).addZeroByte();
+            var keys = this.layout.getCharKeys(string[j]),
+                bits = new Buffer(keys.length);
+
+            if (keys.length == 1)
+                this.addToFile(keys[0]).addZeroByte();
+            else if (keys.length == 2)
+            {
+                this.addToFile(keys[0])
+                    .addToFile(keys[1]);
+            }
+            //this.press(this.charToCode(string[j])).addZeroByte();
         }
         this.applyDefaultDelay();
     },
@@ -118,9 +132,9 @@ module.exports =
         if(this.verbose)
             console.log('Pressing', key);
 
-        this.press('KEY_' + key);
-        return this;
+        this.press(key);
         this.applyDefaultDelay();
+        return this;
     },
 
     pressModifierKey : function(key, parameter)
@@ -208,6 +222,7 @@ module.exports =
     {
         this.file.push(command);
         this.lastCommand.push(command);
+        return this;
     },
 
     resetLastCommand : function()
