@@ -8,6 +8,7 @@ module.exports =
     file : [],
     verbose : false,
     layout : null,
+    lastCommand : [],
 
     setLayout : function(layout)
     {
@@ -54,6 +55,11 @@ module.exports =
         if (this.isComment(command))
             return;
 
+        if (this.isRepeat(command))
+            return this.repeatLastCommand(parseInt(parameter));
+
+        this.resetLastCommand();
+
         if (command == 'DELAY')
             return this.delay(parseInt(parameter));
 
@@ -81,10 +87,10 @@ module.exports =
         while (delay > 0) {
             this.addZeroByte();
             if (delay > 255) {
-                this.file.push(0xFF);
+                this.addToFile(0xFF);
                 delay = delay - 255;
             } else {
-                this.file.push(delay);
+                this.addToFile(delay);
                 delay = 0;
             }
         }
@@ -138,7 +144,7 @@ module.exports =
             console.log('Pressing combo', comboKeys + '-' + parameter);
 
         this.press(parameter);
-        this.file.push(
+        this.addToFile(
             this.layout.getKey('MODIFIERKEY_' + keys[0])
             | this.layout.getKey('MODIFIERKEY_' + keys[1])
         );
@@ -151,7 +157,7 @@ module.exports =
             console.log('Pressing combo ALT-SHIFT');
 
         this.press('LEFT_ALT');
-        this.file.push(
+        this.addToFile(
             this.layout.getKey('MODIFIERKEY_LEFT_ALT')
                 | this.layout.getKey('MODIFIERKEY_SHIFT')
         );
@@ -162,16 +168,45 @@ module.exports =
     {
         var keyValue = this.layout.getKey(keyName);
         if (keyValue)
-            this.file.push(keyValue);
+            this.addToFile(keyValue);
         else
             throw "Unable to get value for key " + keyName;
 
         return this;
     },
 
+    repeatLastCommand : function (times)
+    {
+        for (var i = 0; i < times ; i++)
+        {
+            for (var cmd = 0, count = this.lastCommand.length; cmd < count ; cmd++)
+            {
+                this.file.push(this.lastCommand[cmd]);
+            }
+        }
+        this.resetLastCommand();    
+        return this;
+    },
+
+    addToFile : function(command)
+    {
+        this.file.push(command);
+        this.lastCommand.push(command);
+    },
+
+    resetLastCommand : function()
+    {
+        this.lastCommand = [];
+    },
+
     isComment : function(command)
     {
         return command == 'REM'
+    },
+
+    isRepeat : function(command)
+    {
+        return command == 'REPEAT'
     },
 
     isModifier : function(command)
@@ -196,7 +231,7 @@ module.exports =
 
     addZeroByte : function()
     {
-        this.file.push(0x00);
+        this.addToFile(0x00);
         return this;
     }
 }

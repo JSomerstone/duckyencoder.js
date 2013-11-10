@@ -11,11 +11,13 @@ module.exports =
 {
     setUp: function (callback) {
         encoder.verbose = false;
+        encoder.layout = actualLayout;
         callback();
     },
 
     tearDown: function (callback) {
-        // clean up
+        encoder.file = [];
+        encoder.lastCommand = [];
         callback();
     },
 
@@ -28,6 +30,7 @@ module.exports =
 
     testParsingWithoutLayoutThrows : function(test)
     {
+        encoder.layout = null;
         test.throws(encoder.parse);
         test.done();
     },
@@ -41,7 +44,6 @@ module.exports =
     },
     testParsingString : function(test)
     {
-        encoder.layout = actualLayout;
         encoder.read('STRING abcd').parse();
         test.deepEqual(encoder.file, [4, 0, 5, 0, 6, 0, 7, 0]);
         test.done();
@@ -49,7 +51,6 @@ module.exports =
 
     testReadingIntroductionTypesExpected : function(test)
     {
-        encoder.layout = actualLayout;
         var data = provideInstructionsAndExpectedOutcome();
         for (var i = 0, max = data.length; i < max ; i++)
         {
@@ -61,6 +62,22 @@ module.exports =
                 "Parsing of '" + data[i].input + "' failed"
             );
         }
+        test.done();
+    },
+
+    testLastCommandIsStored : function(test)
+    {
+        encoder.readInstructions('STRING a');
+        encoder.readInstructions('DELAY 1');
+        test.deepEqual([0,1], encoder.lastCommand);
+        test.done();
+    },
+
+    testCommandIsRepeated : function(test)
+    {
+        encoder.readInstructions('DELAY 8');
+        encoder.readInstructions('REPEAT 2');
+        test.deepEqual([0, 8,0, 8,0, 8], encoder.file);
         test.done();
     }
 };
