@@ -130,6 +130,14 @@ provideInstructionsAndExpectedOutcome = function()
             output : [0,2]
         },
         {
+            input : 'DELAY 255',
+            output : [0,255]
+        },
+        {
+            input : 'DELAY 256',
+            output : [0,255,0,1]
+        },
+        {
             input : 'REM Anything beyond this gets ignored',
             output : []
         },
@@ -174,8 +182,8 @@ provideInstructionsAndExpectedOutcome = function()
             output : [226, 6]
         },
         {
-            input : 'STRING Abba & AC/DC',
-            output : [4, 2, 5, 0, 5, 0, 4, 0, 44, 0, 36, 2, 44, 0, 4, 2, 6, 2, 56, 0, 7, 2, 6, 2]
+            input : 'STRING A & B/D',
+            output : [4, 2, 44, 0, 36, 2, 44, 0, 5, 2, 56, 0, 7, 2]
         },
         {
             input : 'STRING sudo !!',
