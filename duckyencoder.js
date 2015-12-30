@@ -5,7 +5,8 @@
 var encoder = require('./include/encoder.js'),
     keyboardLayout = require('./include/keyboardLayout.js'),
     fs = require('fs'),
-    commander = require('./vendor/commander.js/index.js');
+    //commander = require('./vendor/commander.js/index.js');
+    commander = require('commander');
 
 commander.version('0.0.1')
     .option('-i, --input <filename>', 'Input ducky script')

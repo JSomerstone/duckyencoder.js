@@ -1,0 +1,20 @@
+REM OSX-adds reminder to lock one's computer to bash_profile
+DELAY 1000
+GUI SPACE
+DELAY 50
+STRING slack
+DELAY 50
+ENTER
+DELAY 200
+GUI k
+DELAY 100
+STRING announce
+DELAY 50
+ENTER
+DELAY 50
+ALT 2
+STRING channel I forgot to lock my computer
+ENTER
+DELAY 100
+ENTER
+ENTER
